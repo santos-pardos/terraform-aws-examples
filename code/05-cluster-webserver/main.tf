@@ -1,10 +1,17 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 # Data source: query the list of availability zones
-data "aws_availability_zones" "all" {}
+# data "aws_availability_zones" "all" {}
+data "aws_availability_zones" "all" {
+  state = "available"
+}
+
+locals {
+  azs = slice(data.aws_availability_zones.all.names, 0, 3)
+}
 
 # Create a Security Group for an EC2 instance
 resource "aws_security_group" "instance" {
@@ -43,7 +50,7 @@ resource "aws_security_group" "elb" {
 
 # Create a Launch Configuration
 resource "aws_launch_configuration" "example" {
-  image_id		    = "ami-785db401"
+  image_id		    = "ami-052064a798f08f0d3"
   instance_type   = "t2.micro"
   security_groups = ["${aws_security_group.instance.id}"]
   
@@ -61,7 +68,7 @@ resource "aws_launch_configuration" "example" {
 # Create an Autoscaling Group
 resource "aws_autoscaling_group" "example" {
   launch_configuration = "${aws_launch_configuration.example.id}"
-  availability_zones   = ["${data.aws_availability_zones.all.names}"]
+  availability_zones   = local.azs
   
   load_balancers       = ["${aws_elb.example.name}"]
   health_check_type    = "ELB"
@@ -79,7 +86,7 @@ resource "aws_autoscaling_group" "example" {
 # Create an ELB
 resource "aws_elb" "example" {
   name               = "terraform-asg-example"
-  availability_zones = ["${data.aws_availability_zones.all.names}"]
+  availability_zones = local.azs
   security_groups    = ["${aws_security_group.elb.id}"]
   
   listener {

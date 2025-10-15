@@ -10,4 +10,10 @@ sudo chmod +x /usr/local/bin/tofu
 
 tofu version
 
+
+```
+
+## Link
+```
+https://opentofu.org/
 ```

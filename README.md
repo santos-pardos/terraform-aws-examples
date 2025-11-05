@@ -33,6 +33,11 @@ resource "aws_instance" "tf-ec2" {
 }
 ```
 ```
+resource "aws_s3_bucket" "tf-s3" {
+  bucket = "your-unique-bucket-name" // bucket name
+}
+```
+```
 terraform init
 terraform plan
 terraform apply
@@ -98,6 +103,7 @@ This is the list of examples:
 
 
 This code is released under the MIT License. See LICENSE file.
+
 
 
 

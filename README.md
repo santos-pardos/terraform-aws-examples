@@ -1,3 +1,58 @@
+## Instalacion Terraform en AMI Linux 2023
+```
+sudo dnf update -y
+sudo dnf install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo dnf -y install terraform
+terraform version
+terraform -help
+terraform -help apply
+aws configure
+```
+```
+mkdir terraform-aws && cd terraform-aws && touch main.tf
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.30.0"
+    }
+  }
+}
+provider "aws" {
+  region  = "us-east-1"
+}
+resource "aws_instance" "tf-ec2" {
+  ami           = "ami-0bdd88bd06d16ba03"
+  instance_type = "t2.micro"
+  tags = {
+    "Name" = "created-by-terraform"
+  }
+}
+```
+```
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+```
+
+## Instalacion OpenTofu en AMI Linux 2023
+```
+curl --proto '=https' --tlsv1.2 --https-only https://get.opentofu.org/install-opentofu.sh -O install-opentofu.sh
+chmod +x install-opentofu.sh
+./install-opentofu.sh --install-method rpm
+rm -f install-opentofu.sh
+```
+
+# Si no eres dueño o no tienes escritura:
+```
+sudo chown -R "$USER":"$USER" .
+chmod -R u+rwX .
+```
+
+
 # Terraform examples on AWS (Amazon Web Services)
 
 Terraform is used to create, manage, and update infrastructure resources such as physical machines, VMs, network switches, containers, and more. Almost any infrastructure type can be represented as a resource in Terraform.
@@ -34,5 +89,6 @@ This is the list of examples:
 * [14-zero-downtime-deployment](code/14-zero-downtime-deployment) - Terraform Zero-Downtime Deployment: Example that contains a zero-downtime deployment example of a Terraform file on AWS (Amazon Web Services).
 
 ## License
+
 
 This code is released under the MIT License. See LICENSE file.

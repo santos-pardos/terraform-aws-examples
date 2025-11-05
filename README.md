@@ -11,6 +11,7 @@ aws configure
 ```
 ```
 mkdir terraform-aws && cd terraform-aws && touch main.tf
+sudo vim main.tf
 
 terraform {
   required_providers {
@@ -92,3 +93,4 @@ This is the list of examples:
 
 
 This code is released under the MIT License. See LICENSE file.
+

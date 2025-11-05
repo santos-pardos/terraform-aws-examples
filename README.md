@@ -51,6 +51,12 @@ Si no eres dueño o no tienes permisos de escritura:
 sudo chown -R "$USER":"$USER" .
 chmod -R u+rwX .
 ```
+```
+tofu init
+tofu plan
+tofu apply
+tofu destroy
+```
 
 
 # Terraform examples on AWS (Amazon Web Services)
@@ -92,5 +98,6 @@ This is the list of examples:
 
 
 This code is released under the MIT License. See LICENSE file.
+
 
 

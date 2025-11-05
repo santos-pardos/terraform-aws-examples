@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 # Create a Security Group for an EC2 instance 
@@ -17,7 +17,7 @@ resource "aws_security_group" "instance" {
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
-  ami			                = "ami-785db401"
+  ami			                = "ami-0360c520857e3138f"
   instance_type           = "t2.micro"
   vpc_security_group_ids  = ["${aws_security_group.instance.id}"]
   

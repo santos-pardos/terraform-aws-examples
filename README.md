@@ -46,8 +46,7 @@ chmod +x install-opentofu.sh
 ./install-opentofu.sh --install-method rpm
 rm -f install-opentofu.sh
 ```
-
-# Si no eres dueño o no tienes escritura:
+Si no eres dueño o no tienes permisos de escritura:
 ```
 sudo chown -R "$USER":"$USER" .
 chmod -R u+rwX .
@@ -93,4 +92,5 @@ This is the list of examples:
 
 
 This code is released under the MIT License. See LICENSE file.
+
 

@@ -46,7 +46,7 @@ terraform destroy
 
 ## Instalacion OpenTofu en AMI Linux 2023
 ```
-curl --proto '=https' --tlsv1.2 --https-only https://get.opentofu.org/install-opentofu.sh -O install-opentofu.sh
+curl -L https://github.com/opentofu/opentofu/releases/download/v1.6.0/tofu_1.6.0_linux_amd64.zip -o opentofu.zip
 chmod +x install-opentofu.sh
 ./install-opentofu.sh --install-method rpm
 rm -f install-opentofu.sh
@@ -103,6 +103,7 @@ This is the list of examples:
 
 
 This code is released under the MIT License. See LICENSE file.
+
 
 
 

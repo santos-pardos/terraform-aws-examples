@@ -4,6 +4,8 @@ sudo dnf update -y
 sudo dnf install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 sudo dnf -y install terraform
+```
+```
 terraform version
 terraform -help
 terraform -help apply
@@ -103,6 +105,7 @@ This is the list of examples:
 
 
 This code is released under the MIT License. See LICENSE file.
+
 
 
 

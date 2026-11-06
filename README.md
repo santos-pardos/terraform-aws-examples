@@ -14,18 +14,21 @@ aws configure
 ```
 mkdir terraform-aws && cd terraform-aws && touch main.tf
 sudo vim main.tf
-
+```
+```
 terraform {
   required_providers {
     aws = {
       source = "hashicorp/aws"
-      version = "5.30.0"
+      version = ">= 5.40.0"
     }
   }
 }
+
 provider "aws" {
   region  = "us-east-1"
 }
+
 resource "aws_instance" "tf-ec2" {
   ami           = "ami-0bdd88bd06d16ba03"
   instance_type = "t2.micro"
@@ -33,10 +36,9 @@ resource "aws_instance" "tf-ec2" {
     "Name" = "created-by-terraform"
   }
 }
-```
-```
+
 resource "aws_s3_bucket" "tf-s3" {
-  bucket = "your-unique-bucket-name" // bucket name
+  bucket = "micubosantos2027"
 }
 ```
 ```

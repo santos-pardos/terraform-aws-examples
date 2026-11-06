@@ -19,8 +19,8 @@ sudo vim main.tf
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
-      version = ">= 5.40.0"
+      source  = "hashicorp/aws"
+      version = "~> 4.67.0"
     }
   }
 }
@@ -38,7 +38,7 @@ resource "aws_instance" "tf-ec2" {
 }
 
 resource "aws_s3_bucket" "tf-s3" {
-  bucket = "micubosantos2027"
+  bucket = "micubosantos20272028"
 }
 ```
 ```
